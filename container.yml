@@ -2,7 +2,6 @@ version: "2"
 settings:
 
   conductor:
-
     base: alpine:3.5
 
   project_name: protege
@@ -20,7 +19,7 @@ services:
       - "protege:/data/db:rw"
 
   webapp:
-    from: g8tor/webprotege-alpine:local
+    from: g8tor/webprotege-alpine:latest
     hostname: protege
     ports: 
       - 8181:8080
@@ -30,4 +29,3 @@ services:
       - mongodb
 
 registries: {}
-
