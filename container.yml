@@ -1,0 +1,33 @@
+version: "2"
+settings:
+
+  conductor:
+
+    base: alpine:3.5
+
+  project_name: protege
+volumes:
+ protege:
+  docker: {}
+  k8s: {}
+
+services: 
+
+  mongodb:
+     from: g8tor/mongo-alpine:latest
+     hostname: mongodb
+     volumes:
+      - "protege:/data/db:rw"
+
+  webapp:
+    from: g8tor/webprotege-alpine:local
+    hostname: protege
+    ports: 
+      - 8181:8080
+    volumes:
+      - "protege:/data/webprotege:rw"
+    depends_on:
+      - mongodb
+
+registries: {}
+
