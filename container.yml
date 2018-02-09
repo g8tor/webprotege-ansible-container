@@ -16,7 +16,7 @@ services:
      from: g8tor/mongo-alpine:latest
      hostname: mongodb
      volumes:
-      - "protege:/data/db:rw"
+      - "protege:/data/mongo/db:rw"
 
   webapp:
     from: g8tor/webprotege-alpine:latest
@@ -24,7 +24,7 @@ services:
     ports: 
       - 8181:8080
     volumes:
-      - "protege:/data/webprotege:rw"
+      - "protege:/data/protege/webprotege:rw"
     depends_on:
       - mongodb
 
